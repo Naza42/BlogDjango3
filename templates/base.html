@@ -89,9 +89,9 @@
           <li><a class="getstarted scrollto" href="{% url 'login' %}">Login</a></li>
         {% endif %}
         </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-
+      <i class="mobile-nav-toggle mobile-nav-show bi bi-list"></i>
+      <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
     </div>
   </header><!-- End Header -->
 
@@ -134,6 +134,10 @@
       </div>
     </div>
   </footer><!-- End Footer -->
+
+  {% block javascript %}
+  <script src="{% static 'js/main.js' %}"></script>
+  {% endblock %}
 
 </body>
 </html>
