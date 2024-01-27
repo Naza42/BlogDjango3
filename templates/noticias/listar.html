@@ -22,7 +22,7 @@
               <div class="container">
                 <ol>
                   <li><a href="index.html">Home</a></li>
-                  <li>Blog</li>
+                  <li>Portal de noticias</li>
                 </ol>
               </div>
             </nav>
@@ -32,32 +32,37 @@
 
           <h2>Aquí están mis noticias</h2> 
 
+          {% if user.is_authenticated%}
           <div class="">
             <a href="{% url 'noticias:addnoticia' %}" class="btn-get-started">Añadir Noticia</a>
           </div>
+          {%endif%}
+          
+          
           
 
 
           
-          <div class="submenu">
-              <div class="dropdown">
-                  <button class="btn-get-started" class="dropdown-btn">Categorías</button>
-                  <div class="dropdown-content">
-                  <a href="{% url 'noticias:listar' %}">Todas las noticias</a>
-                  {% for cat in categorias %}
-                  <a href="?categoria={{ cat.pk }}">{{ cat.nombre }}</a>
-                  {% endfor %}
-                  </div>
+          <div class="submenu ">
+            <div class="d-flex align-items-center">
+              <button class="btn-get-started">Categorías</button>
+              <div class="ml-2 movi">
+                <a href="{% url 'noticias:listar' %}" class="texts-buttons text-decoration-none">Todas las noticias</a>
+                {% for cat in categorias %}
+                  <a class="text-decoration-none" href="?categoria={{ cat.pk }}">{{ cat.nombre }}</a>
+                {% endfor %}
               </div>
-              <div class="dropdown">
-                  <button class="dropdown-btn">Ordenar</button>
-                  <div class="dropdown-content">
-                  <a href="?antiguedad_asc=1">Más antiguas primero</a>
-                  <a href="?antiguedad_desc=1">Más recientes primero</a>
-                  <a href="?orden_asc=1">Orden alfabético ascendente</a>
-                  <a href="?orden_desc=1">Orden alfabético descendente</a>
-                  </div>
+            </div>
+          </div>
+          <div class="d-flex buttons align-items-center">
+            <button class="btn-get-started">Ordenar</button>
+              <div class="movi">
+                <a href="?antiguedad_asc=1" class="text-decoration-none">Antiguas</a>
+                <a  href="?antiguedad_desc=1" class="text-decoration-none">Recientes</a>
+                <a href="?orden_asc=1" class="text-decoration-none">A-Z</a>
+                <a href="?orden_desc=1" class="text-decoration-none">Z-A</a>
               </div>
+          </div>
               <a href="?antiguedad_asc=1">
                   <button class="arrow-btn">&#11014;</button>
                 </a>
@@ -74,22 +79,22 @@
                 <div class="row gy-4 posts-list">
                     {% for noti in noticias %}
                         <div class="col-xl-4 col-md-6">
-                            <a href="{% url 'noticias:detalle' noti.pk %}" class="article-link complet title" style="text-decoration: none;">  <article>
+                            <a href="{% url 'noticias:detalle' noti.pk %}" class="article-link title text-decoration-none" >  <article>
                                     <div class="post-img">
                                         {% if noti.imagen %}
                                             <img src="{{ noti.imagen.url }}" alt="" class="img-fluid">
                                         {% endif %}
                                     </div>
                                     <p class="post-category">{{ noti.categoria_noticia }}</p>
-                                    <h2 class="title">
+                                    <h2 class="title" >
                                         {{ noti.titulo }}
                                     </h2>
                                     <div class="d-flex align-items-center">
                                         <img src="{{ noti.autor.profile_picture.url }}" alt="" class="img-fluid post-author-img flex-shrink-0">
                                         <div class="post-meta">
-                                            <p class="post-author-list">{{ noti.autor }}</p>
+                                            <p class="post-author-list">{{ noti.author }}</p>
                                             <p class="post-date">
-                                                <time datetime="{{ noti.fecha_de_publicacion }}">{{ noti.fecha_de_publicacion|date:"F d, Y" }}</time>
+                                                <time datetime="{{ noti.fecha_de_publicacion }}">{{ noti.fecha_de_publicacion|date:"d F, Y" }}</time>
                                             </p>
                                         </div>
                                     </div>

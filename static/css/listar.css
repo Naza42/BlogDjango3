@@ -17,6 +17,10 @@
   scroll-behavior: smooth;
 }
 
+body{
+  text-decoration: none;
+}
+
 /*--------------------------------------------------------------
 # Breadcrumbs
 --------------------------------------------------------------*/
@@ -59,9 +63,9 @@
   transition: 0.3s;
 }
 
-/* .breadcrumbs nav ol a:hover {
+ .breadcrumbs nav ol a:hover {
   text-decoration: none;
-} */
+} 
 
 .breadcrumbs nav ol li+li {
   padding-left: 10px;
@@ -78,7 +82,7 @@
 # Blog
 --------------------------------------------------------------*/
 .btn-get-started {
-  font-family: var(--font-primary);
+  font-family: var(--font-primary) ;
   font-weight: 500;
   font-size: 15px;
   letter-spacing: 1px;
@@ -87,7 +91,7 @@
   border-radius: 50px;
   transition: 0.3s;
   color: #fff;
-  background: var(--color-primary);
+  background: var(--color-primary) !important;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
   border: 2px solid rgba(255, 255, 255, 0.1)
 }
@@ -99,6 +103,18 @@ a.btn-get-started {
 .btn-get-started:hover {
   border-color: rgba(255, 255, 255, 0.5);
   
+}
+
+.d-flex {
+  align-items: center;
+}
+.buttons{
+  align-items: center;
+}
+
+.submenu .ml-2 a {
+  color: var(--color-primary);
+  text-decoration: none;
 }
 
 
@@ -172,12 +188,12 @@ a.btn-get-started {
 }
 
 .blog .posts-list .title a {
-  color: var(--color-default);
-  transition: 0.3s;
+  color: var(--color-primary) !important;
+  transition: 0.3s;;
 }
 
 .blog .posts-list .title a:hover {
-  color: var(--color-primary);
+  color: var(--color-secondary) !important;
 }
 
 .blog .posts-list .post-author-img {
@@ -195,4 +211,39 @@ a.btn-get-started {
   font-size: 14px;
   color: #3c3c3c;
   margin-bottom: 0;
+}
+
+.mi-clase .enlaces a {
+  color: var(--color-primary) !important; /* Rojo */
+}
+
+.movi a {
+  margin-right: 10px !important;
+  color: var(--color-primary);
+}
+
+.movi a:hover {
+  color: aquamarine !important;
+}
+a{
+  text-decoration: none !important;
+}
+
+
+h2.title{
+  color: var(--color-primary, black) !important;
+  overflow: hidden !important;
+  line-height: -35px;
+}
+
+h2.title:hover{
+  color: #03ab97;
+}
+
+a.article-link.title.text-decoration-none{
+  color: var(--color-primary, black) !important; 
+}
+
+a.article-link.title.text-decoration-none:hover{
+  color: #03ab97 !important; 
 }

@@ -18,6 +18,7 @@ class Noticia(models.Model):
     imagen = models.ImageField(upload_to= 'noticias')
     categoria_noticia = models.ForeignKey(Categoria, on_delete= models.CASCADE) #SET_NULL
     author = models.ForeignKey(Usuario, on_delete=models.CASCADE)
+    
 
     def __str__(self):
         return self.titulo

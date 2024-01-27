@@ -1,11 +1,22 @@
 from django import forms
 from .models import Noticia, Comment
+from django.forms import ModelForm, TextInput
+from django.forms.widgets import TextInput, FileInput, Select
+
 
 class NoticiaForm(forms.ModelForm):
     
     class Meta:
         model = Noticia
         fields = ['titulo', 'resumen', 'contenido', 'imagen', 'categoria_noticia']
+        widgets = {
+            'titulo': TextInput(attrs={'class': 'form-control'}),
+            'resumen': TextInput(attrs={'class': 'form-control'}),
+            'contenido': forms.Textarea(attrs={'class': 'form-control'}),
+            'imagen': FileInput(attrs={'class': 'form-control'}),
+            'categoria_noticia': Select(attrs={'class': 'form-control'}),
+        }
+
 
 # CREAR COMENTARIOS
 class CommentForm(forms.ModelForm):

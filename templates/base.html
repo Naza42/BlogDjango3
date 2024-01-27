@@ -81,7 +81,7 @@
             </ul>
           </li> {% endcomment %}
           {% if user.is_authenticated %}
-          <strong class="nav-link scrollto"> Hola {{ user.username }}</strong>
+          <strong class="hello"> Hola {{ user.username }}</strong>
           <li><a class="getstarted scrollto" href="{% url 'logout' %}">Logout</a></li>
           {% else %}
         <li class="nav-item">
@@ -135,9 +135,6 @@
     </div>
   </footer><!-- End Footer -->
 
-  {% block javascript %}
-  <script src="{% static 'js/main.js' %}"></script>
-  {% endblock %}
 
 </body>
 </html>

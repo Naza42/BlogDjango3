@@ -155,7 +155,7 @@ def AddNoticia(request):
             noticia = form.save(commit=False)
             noticia.author = request.user #autor de la noticia
             noticia.save()
-            return redirect('home')
+            return redirect('noticias:listar')
     else:
         form = NoticiaForm()
     
