@@ -32,7 +32,7 @@
 
           <h2>Aquí están mis noticias</h2> 
 
-          {% if user.is_authenticated%}
+          {% if request.user.tipo_usuario == 'Colaborador' or request.user.is_superuser%}
           <div class="">
             <a href="{% url 'noticias:addnoticia' %}" class="btn-get-started">Añadir Noticia</a>
           </div>
@@ -63,12 +63,6 @@
                 <a href="?orden_desc=1" class="text-decoration-none">Z-A</a>
               </div>
           </div>
-              <a href="?antiguedad_asc=1">
-                  <button class="arrow-btn">&#11014;</button>
-                </a>
-                <a href="?antiguedad_desc=1">
-                  <button class="arrow-btn">&#11015;</button>
-                </a>
           </div>
 
 

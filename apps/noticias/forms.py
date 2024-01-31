@@ -24,6 +24,9 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ['text'] #campos de mi formulario
         exclude = ['author']
+        widgets = {
+        'text': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'Escribe tu comentario aquí...'}),
+    }
     
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)

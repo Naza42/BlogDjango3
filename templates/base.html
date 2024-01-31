@@ -81,8 +81,10 @@
             </ul>
           </li> {% endcomment %}
           {% if user.is_authenticated %}
-          <strong class="hello"> Hola {{ user.username }}</strong>
+          <div class="d-flex">
+          <a class="hello scrollto nav-link"> Hola {{ user.username }}</a>
           <li><a class="getstarted scrollto" href="{% url 'logout' %}">Logout</a></li>
+        </div>
           {% else %}
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="{% url 'registro' %}">Registro</a>
@@ -135,6 +137,7 @@
     </div>
   </footer><!-- End Footer -->
 
+  <script src="{% static 'js/all.js' %}"></script>
 
 </body>
 </html>
