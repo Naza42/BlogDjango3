@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .forms import ContactoForm
 from django.contrib.auth.decorators import login_required
 
-@login_required
+
 def contacto(request):
     context = {
         'form' : ContactoForm()

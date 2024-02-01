@@ -17,16 +17,6 @@
 
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
-        {% comment %} <div class="page-header d-flex align-items-center" style="background-image: url('');">
-          <div class="container position-relative">
-            <div class="row d-flex justify-content-center">
-              <div class="col-lg-6 text-center">
-                <h2>{{ noticia.resumen }}</h2>
-                <p>Odio et unde deleniti. Deserunt numquam exercitationem. Officiis quo odio sint voluptas consequatur ut a odio voluptatem. Sit dolorum debitis veritatis natus dolores. Quasi ratione sint. Sit quaerat ipsum dolorem.</p>
-              </div>
-            </div>
-          </div>
-        </div> {% endcomment %}
         <nav>
           <div class="container">
             <ol>
@@ -65,15 +55,6 @@
                   <p>
                     {{ noticia.contenido }}
                   </p>
-  
-                  {% comment %} <blockquote>
-                    <p>
-                      Et vero doloremque tempore voluptatem ratione vel aut. Deleniti sunt animi aut. Aut eos aliquam doloribus minus autem quos.
-                    </p>
-                  </blockquote> {% endcomment %}
-  
-                  
-  
                 </div><!-- End post content -->
   
                 <div class="meta-bottom">
@@ -82,33 +63,10 @@
                     <a href="/noticias/categoria/{{ noticia.categoria_noticia }}">{{ noticia.categoria_noticia }}</a>
 
                   </ul>
-  
-                  {% comment %} <i class="bi bi-tags"></i>
-                  <ul class="tags">
-                    <li><a href="#">Creative</a></li>
-                    <li><a href="#">Tips</a></li>
-                    <li><a href="#">Marketing</a></li>
-                  </ul>
-                </div><!-- End meta bottom --> {% endcomment %}
-  
               </article><!-- End blog post -->
   
-              {% comment %} <div class="post-author d-flex align-items-center">
-                <img src="assets/img/blog/blog-author.jpg" class="rounded-circle flex-shrink-0" alt="">
-                <div>
-                  <h4>{{noticia.author}}</h4>
-                  <div class="social-links">
-                    <a href="https://twitters.com/#"><i class="bi bi-twitter"></i></a>
-                    <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
-                    <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
-                  </div>
-                  <p>
-                    Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
-                  </p>
-                </div>
-              </div><!-- End post author --> {% endcomment %}
 
-
+              <!-- ======= Comentarios ======= -->
               <div class="comments">
 
                 <h4 class="comments-count">Comentarios</h4>
@@ -125,8 +83,8 @@
                       <form method="POST" action="{% url 'noticias:delete_comment' comment.id %}">
                         {% csrf_token %}
                         {% if comment.author == user.username or user.is_staff or user.is_superuser %}
-                            <button type="submit">Borrar comentario</button>
-                            <a href="{% url 'noticias:edit_comment' comment_id=comment.id %}">Editar comentario</a>
+                            <button class="btn btn-primary" type="submit">Borrar comentario</button>
+                            <a href="{% url 'noticias:edit_comment' comment_id=comment.id %}" class="btn btn-primary">Editar comentario</a>
                         {% endif %}
                     </div>
                   </div>
@@ -154,64 +112,11 @@
                 </div>
                 {% else %}
                 <p>Debe iniciar sesión para añadir un comentario</p>
-                <a href="{% url 'login' %}">LOGIN</a>
+                <a href="{% url 'login' %}" class="btn-get-started">LOGIN</a>
                 {% endif %}
 
               </div><!-- End blog comments -->
 
-
-
-
-
-    {% comment %} <h2>Mi noticia detallada</h2>
-    {% if user.is_authenticated and noticia.author == user or user.is_staff or user.is_superuser %}
-        <a href="{% url 'noticias:edit_noticia' pk=noticia.pk %}">Editar</a>
-
-        <form method="POST" action="{% url 'noticias:detalle' pk=noticia.pk %}">
-            {% csrf_token %}
-            <button type="submit" name="delete_noticia">BORRAR</button>
-        </form>
-    {% endif %}
-    <img src="{{ noticia.imagen.url }}" width="50%">
-    <p>TITULO: {{ noticia.titulo }}</p>
-    <p>FECHA: {{ noticia.fecha_de_publicacion }}</p>
-    <p>AUTOR: {{ noticia.author }}</p>
-    <p>CATEGORIA: {{ noticia.categoria_noticia }}</p>
-    <p>CUERPO: {{ noticia.contenido }}</p>
-    <br>
-
-    <h3>Comentarios</h3>
-    {% for comment in comments %}
-        <!-- <img src="{{user.imagen.url}}" style="height: 2rem; border-radius: 10%;"></img>}} -->
-        <p>{{ comment.author }}</p>
-        <p>{{ comment.text }}</p>
-        <p>{{ comment.created_at }}</p>
-        <form method="POST" action="{% url 'noticias:delete_comment' comment.id %}">
-            {% csrf_token %}
-            {% if comment.author == user.username or user.is_staff or user.is_superuser %}
-                <button type="submit">Borrar comentario</button>
-                <a href="{% url 'noticias:edit_comment' comment_id=comment.id %}">Editar comentario</a>
-            {% endif %}
-        </form>
-        <hr>
-    {% empty %}
-        <p>No hay comentarios.</p>
-    {% endfor %}
-
-    {% if user.is_authenticated %}
-        <h3>Añadir Comentario</h3>
-        <form method="POST" action="{% url 'noticias:add_comment' noticia.pk %}">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Enviar</button>
-        </form>
-    {% else %}
-        <p>Debe iniciar sesión para añadir un comentario</p>
-        <a href="{% url 'login' %}">LOGIN</a>
-    {% endif %}
-
-    <br><br>
-    <a href="{% url 'noticias:listar' %}">VOLVER</a> {% endcomment %}
 
     <script src="{% static 'js/all.js' %}"></script>
 {% endblock contenido %}

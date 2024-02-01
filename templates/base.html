@@ -11,41 +11,6 @@
     <link rel="stylesheet" href="{% static 'css/form.css' %}">
 </head>
 <body>
-        {% comment %} <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark"> 
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">Cotton Academy</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-                  </li>
-
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{% url 'noticias:listar' %}">Noticias</a>
-                  </li>
-                  
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contacto:contacto' %}">Contacto</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'quienes_somos' %}">Quienes somos</a>
-                  </li>
-                  {% if user.is_authenticated %}
-                      <strong>Hola {{ user.username }}</strong>
-                      <a class="nav-link active" aria-current="page" href="{% url 'logout' %}">Logout</a>
-                  {% else %}
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="{% url 'login' %}">Login</a> </li>
-                      <a class="nav-link active" aria-current="page" href="{% url 'registro' %}">Registro</a>
-                  {% endif %}
-                </ul>
-              </div>
-            </div>
-          </nav>   {% endcomment %}
-
           <!-- ======= Header ======= -->
   <header id="header">
     <div class="container d-flex align-items-center justify-content-between">
@@ -58,37 +23,19 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="{% url 'home' %}">Home</a></li>
+          <li><a class="nav-link scrollto active" href="{% url 'home' %}">Inicio</a></li>
           <li><a class="nav-link scrollto" href="{% url 'noticias:listar' %}">Noticias</a></li>
           <li><a class="nav-link scrollto" href="{% url 'contacto:contacto' %}">Contacto</a></li>
           <li><a class="nav-link scrollto" href="{% url 'quienes_somos' %}">Quienes somos</a></li>
-          {% comment %} <li><a class="nav-link scrollto" href="#team">Team</a></li>
-          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Drop Down 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li> {% endcomment %}
           {% if user.is_authenticated %}
           <div class="d-flex">
           <a class="hello scrollto nav-link"> Hola {{ user.username }}</a>
-          <li><a class="getstarted scrollto" href="{% url 'logout' %}">Logout</a></li>
+          <li><a class="getstarted scrollto" href="{% url 'logout' %}">Cerrar Sesión</a></li>
         </div>
           {% else %}
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="{% url 'registro' %}">Registro</a>
-          <li><a class="getstarted scrollto" href="{% url 'login' %}">Login</a></li>
+          <a class="nav-link active" aria-current="page" href="{% url 'registro' %}">Registrarse</a>
+          <li><a class="getstarted scrollto" href="{% url 'login' %}">Iniciar Sesión</a></li>
         {% endif %}
         </ul>
       </nav><!-- .navbar -->
@@ -96,13 +43,8 @@
       <i class="mobile-nav-toggle mobile-nav-hide d-none bi bi-x"></i>
     </div>
   </header><!-- End Header -->
-
-
-
 {% block contenido %}
 {% endblock contenido %}
-
-
   <!-- ======= Footer ======= -->
   <footer id="footer">
 
@@ -124,7 +66,6 @@
             </form>
           </div>
         </div>
-
       </div>
     </div>
 

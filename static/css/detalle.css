@@ -713,3 +713,27 @@
   .blog .comments .reply-form .btn-primary:hover {
     background-color: rgba(248, 90, 64, 0.8);
   }
+
+  .btn-get-started {
+    font-family: var(--font-primary) ;
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 14px 15px;
+    border-radius: 50px;
+    transition: 0.3s;
+    color: #fff;
+    background: var(--color-primary) !important;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.1)
+  }
+  
+  a.btn-get-started {
+    text-decoration: none;
+  }
+  
+  .btn-get-started:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    
+  }

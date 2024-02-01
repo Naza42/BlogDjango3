@@ -28,6 +28,7 @@
     </nav>
   </div><!-- End Breadcrumbs -->
 
+  {% if user.is_authenticated %}
 <form method='post' class="form-control form-group d-flex justify-content-center">
 
 
@@ -38,6 +39,14 @@
     <button class="btn-get-started" type="submit">ENVIAR</button>
     </div>
 </form>
+  {% else %}
+  <div class="col-md-6 form-group mt-3 mt-md-0">
+    <h3>Autentiquese para poder acceder al formulario de contactos</h3>
+    <a href="{% url 'login' %}" class="btn-get-started" type="submit">Inicie Sesión</a>
+    <a href="{% url 'registro' %}" class="btn-get-started" type="submit">Registrese</a>
+  </div>
+  {%endif%}
+
 
 {{ mensaje }}
 

@@ -89,11 +89,12 @@ def DetalleNoticias(request, pk):
     if request.method == 'POST' and 'add_comment' in request.POST:
         form = CommentForm(request.POST)
         if form.is_valid():
+            noticia = get_object_or_404(Noticia, pk=pk)  # Obtén la noticia aquí
             comment = form.save(commit=False)
-            comment.noticia = noticia
+            comment.noticia = noticia  # Asigna la noticia obtenida
             comment.author = request.user
             comment.save()
-            return redirect('noticias:detalle', pk=pk)
+        return redirect('noticias:detalle', pk=pk)
     else:
         form = CommentForm()
 
